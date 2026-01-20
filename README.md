@@ -1,15 +1,31 @@
-# ai-research-assistant
+## Architecture
+```
+[User Question] 
+    ↓
+[Planning Agent] → Creates research plan
+    ↓
+[Search Agent] → Calls Tavily for sources
+    ↓
+[Synthesis Agent] → Combines findings
+    ↓
+[Quality Agent] → Validates citations
+    ↓
+[Final Answer with Sources]
+```
 
-AI Research Assistant
-Multi agent AI system that turns a plain language question into a structured research plan, calls trusted web sources, and returns a cited summary plus links so users can quickly verify and dive deeper. Built with Claude and Tavily, with agents for planning, searching, summarizing, and quality checking.
+## Results
+- Reduces research time from hours to minutes
+- Automatically cites all sources
+- Pulls from trusted, up-to-date web sources
 
-What it does
-Takes an open ended question (for example, “Compare income driven repayment options for federal student loans in the US”).
-Breaks it into a research plan with subquestions and search targets.
-Uses Tavily to pull in up to date, reputable sources.
-Synthesizes a concise answer with inline citations and a list of sources for manual review.
+## Technical Implementation
 
-Who it is for
-Students and self‑learners doing background research.
-Product managers and analysts who need a fast first pass on a topic.
+**Agent Orchestration:** LangGraph for workflow management  
+**LLM:** Claude Sonnet 4 for reasoning and synthesis  
+**Search:** Tavily API for real-time web search  
+**RAG:** Hybrid retrieval combining semantic search and keyword matching  
 
+**Key Features:**
+- Parallel agent execution for speed
+- Citation validation to prevent hallucinations
+- Fallback handling for API errors
